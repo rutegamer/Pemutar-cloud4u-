@@ -1,0 +1,90 @@
+/* styles.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+}
+
+.video-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    animation: scaleAnimation 0.8s ease-out;
+}
+
+/* Kontrol Kecepatan */
+.speed-control {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    outline: none;
+    margin-top: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3498db;
+    cursor: pointer;
+}
+
+#speed-display {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* Perubahan tambahan */
+#search-container {
+    margin-bottom: 10px;
+}
+
+#video-list-container {
+    margin-top: 10px;
+    max-height: 200px; /* Tinggi maksimum untuk dapat di-scroll */
+    overflow-y: auto; /* Aktifkan scrolling vertical jika daftar melebihi tinggi maksimum */
+}
+
+.video-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.video-item img {
+    width: 80px;
+    height: 60px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.video-item p {
+    margin: 0;
+    cursor: pointer;
+}

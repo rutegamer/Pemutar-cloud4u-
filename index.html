@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pemutar cloud4u</title>
+</head>
+<body>
+    <div class="video-container">
+        <h1 class="player-title">Pemutar cloud4u</h1>
+        <div id="search-container">
+            <input type="text" id="video-search" placeholder="Cari video...">
+            <button onclick="searchVideo()">Cari</button>
+            <button onclick="cancelSearch()">Batal</button>
+        </div>
+        <div id="video-list-container">
+            <div id="video-list"></div>
+        </div>
+        <iframe id="youtube-player" width="480" height="270" src="https://www.youtube.com/embed/3nQNiWdeH2Q?enablejsapi=1" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+        <!-- Kontrol Kecepatan -->
+        <div class="speed-control">
+            <label for="speed">Kecepatan:</label>
+            <input type="range" id="speed" name="speed" min="0.25" max="2" step="0.25" value="1">
+            <span id="speed-display">1x</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
