@@ -28,17 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Fungsi untuk membatalkan pencarian dan memuat kembali video yang telah dipilih
-    window.cancelSearch = function () {
-        videoListContainer.innerHTML = ''; // Mengosongkan daftar hasil pencarian
-        if (selectedVideoId !== '') {
-            // Memuat kembali video yang telah dipilih sebelumnya
-            const videoUrl = `https://www.youtube.com/embed/${selectedVideoId}?enablejsapi=1`;
-            youtubePlayer.src = videoUrl;
-            videoSearchInput.value = ''; // Mengosongkan input pencarian
-        }
-    };
-
     // Fungsi untuk mencari video di YouTube Data API
     function searchYouTubeVideos(query) {
         // Ganti 'YOUR_API_KEY' dengan kunci API YouTube Anda
@@ -70,6 +59,17 @@ document.addEventListener('DOMContentLoaded', function () {
             videoListContainer.appendChild(videoItem);
         });
     }
+
+    // Fungsi untuk membatalkan pencarian dan memuat kembali video yang telah dipilih
+    window.cancelSearch = function () {
+        videoListContainer.innerHTML = ''; // Mengosongkan daftar hasil pencarian
+        if (selectedVideoId !== '') {
+            // Memuat kembali video yang telah dipilih sebelumnya
+            const videoUrl = `https://www.youtube.com/embed/${selectedVideoId}?enablejsapi=1`;
+            youtubePlayer.src = videoUrl;
+            videoSearchInput.value = ''; // Mengosongkan input pencarian
+        }
+    };
 
     // Fungsi untuk memuat video ke pemutar utama
     window.loadVideo = function (videoId, videoTitle) {
