@@ -1,32 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Pemutar cloud4u</title>
+    <title data-lang="page_title">Pemutar cloud4u</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <div class="video-container">
-        <h1 class="player-title">Pemutar cloud4u</h1>
+        <h1 class="player-title" data-lang="player_title">Pemutar cloud4u</h1>
         <div id="search-container">
-            <input type="text" id="video-search" placeholder="Cari video...">
-            <button onclick="searchVideo()">Cari</button>
-            <button onclick="cancelSearch()">Batal</button>
+            <input type="text" id="video-search" placeholder="" data-lang-placeholder="search_placeholder">
+            <button onclick="searchVideo()" data-lang="search_button">Cari</button>
+            <button onclick="cancelSearch()" data-lang="cancel_button">Batal</button>
         </div>
         <div id="video-list-container">
             <div id="video-list"></div>
         </div>
+        <div id="resolution-container">
+            <label for="resolution-select" data-lang="select_resolution">Pilih Resolusi:</label>
+            <select id="resolution-select">
+                <option value="small">144p</option>
+                <option value="medium">360p</option>
+                <option value="large">480p</option>
+                <option value="hd720">720p</option>
+                <option value="hd1080">1080p</option>
+                <!-- Add other resolution options as needed -->
+            </select>
+        </div>
         <iframe id="youtube-player" width="480" height="270" src="https://www.youtube.com/embed/3nQNiWdeH2Q?enablejsapi=1" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 
-        <!-- Kontrol Kecepatan -->
+        <!-- Speed Control -->
         <div class="speed-control">
-            <label for="speed">Kecepatan:</label>
+            <label for="speed" data-lang="speed_label">Kecepatan:</label>
             <input type="range" id="speed" name="speed" min="0.25" max="2" step="0.25" value="1">
             <span id="speed-display">1x</span>
+        </div>
+
+        <!-- Language Control -->
+        <div class="language-control">
+            <label for="language-select" data-lang="select_language">Pilih Bahasa:</label>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="id" selected>Bahasa Indonesia</option>
+                <option value="ja">日本語 (Japanese)</option>
+                <option value="ko">한국어 (Korean)</option>
+                <option value="th">ไทย (Thai)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <!-- Add more language options as needed -->
+            </select>
         </div>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        // Data bahasa
+        const languageData = {
+            page_title: {
+                en: "Cloud4u Player",
+                id: "Pemutar cloud4u",
+                ja: "Cloud4u プレーヤー",
+                ko: "Cloud4u 플레이어",
+                th: "เครื่องเล่น Cloud4u",
+                es: "Reproductor Cloud4u",
+                fr: "Lecteur Cloud4u",
+                hi: "Cloud4u प्लेयर",
+                zh: "Cloud4u 播放器"
+                // Add more language translations as needed
+            },
+            player_title: {
+                en: "Cloud4u Player",
+                id: "Pemutar cloud4u",
+                ja: "Cloud4u プレーヤー",
+                ko: "Cloud4u 플레이어",
+                th: "เครื่องเล่น Cloud4u",
+                es: "Reproductor Cloud4u",
+                fr: "Lecteur Cloud4u",
+                hi: "Cloud4u प्लेयर",
+                zh: "Cloud4u 播放器"
+                // Add more language translations as needed
+            },
+            select_resolution: {
+                en: "Select Resolution:",
+                id: "Pilih Resolusi:",
+                ja: "解像度を選択:",
+                ko: "해상도 선택:",
+                th: "เลือกระดับความละเอียด:",
+                es: "Seleccionar resolución:",
+                fr: "Sélectionner la résolution:",
+                hi: "रिज़ॉल्यूशन का चयन करें:",
+                zh: "选择分辨率："
+                // Add more language translations as needed
+            },
+            speed_label: {
+                en: "Speed:",
+                id: "Kecepatan:",
+                ja: "速度:",
+                ko: "속도:",
+                th: "ความเร็ว:",
+                es: "Velocidad:",
+                fr: "Vitesse:",
+                hi: "गति:",
+                zh: "速度："
+                // Add more language translations as needed
+            },
+            select_language: {
+                en: "Select Language:",
+                id: "Pilih Bahasa:",
+                ja: "言語を選択:",
+                ko: "언어 선택:",
+                th: "เลือกภาษา:",
+                es: "Seleccionar idioma:",
+                fr: "Sélectionner la langue:",
+                hi: "भाषा का चयन करें:",
+                zh: "选择语言："
+                // Add more language translations as needed
+            },
+            search_placeholder: {
+                en: "Search video...",
+                id: "Cari video...",
+                ja: "ビデオを検索...",
+                ko: "비디오 검색...",
+                th: "ค้นหาวิดีโอ...",
+                es: "Buscar video...",
+                fr: "Rechercher une vidéo...",
+                hi: "वीडियो खोजें...",
+                zh: "搜索视频..."
+                // Add more language translations as needed
+            },
+            search_button: {
+                en: "Search",
+                id: "Cari",
+                ja: "検索",
+                ko: "검색",
+                th: "ค้นหา",
+                es: "Buscar",
+                fr: "Rechercher",
+                hi: "खोजें",
+                zh: "搜索"
+                // Add more language translations as needed
+            },
+            cancel_button: {
+                en: "Cancel",
+                id: "Batal",
+                ja: "キャンセル",
+                ko: "취소",
+                th: "ยกเลิก",
+                es: "Cancelar",
+                fr: "Annuler",
+                hi: "रद्द करें",
+                zh: "取消"
+                // Add more language translations as needed
+            }
+            // Add more language key-value pairs as needed
+        };
+
+        // Variabel untuk menyimpan bahasa saat ini
+        let currentLanguage = 'id';
+
+        // Fungsi untuk inisialisasi bahasa saat halaman dimuat
+        function initLanguageFunction() {
+            updateLanguage();
+        }
+
+        // Fungsi untuk memperbarui bahasa
+        function updateLanguage() {
+            // Mendapatkan elemen-elemen yang memiliki atribut data-lang
+            const elements = document.querySelectorAll('[data-lang]');
+
+            // Mengupdate teks elemen-elemen sesuai dengan data bahasa
+            elements.forEach(element => {
+                const key = element.dataset.lang;
+                if (element.tagName === 'INPUT' && key === 'search_placeholder') {
+                    // Jika elemen adalah input dengan key 'search_placeholder'
+                    element.placeholder = languageData[key][currentLanguage];
+                } else {
+                    // Untuk elemen lain, mengubah teks kontennya
+                    element.textContent = languageData[key][currentLanguage];
+                }
+            });
+        }
+
+        // Fungsi untuk mengganti bahasa
+        function changeLanguage(language) {
+            currentLanguage = language;
+            updateLanguage();
+        }
+
+        // Kontrol bahasa
+        $('#language-select').on('change', function () {
+            changeLanguage(this.value);
+        });
+
+        // Inisialisasi bahasa saat halaman dimuat
+        initLanguageFunction();
+    </script>
 </body>
 </html>
